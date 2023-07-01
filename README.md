@@ -10,3 +10,4 @@ I would definately recommend it to any beginners who are just starting on their 
 ## Diving into PDO Stuff:
 
 Concpets about php and database working togather to create a dynamic application. 
+ 1. PDO is object oriented
