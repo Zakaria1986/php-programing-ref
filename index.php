@@ -27,3 +27,7 @@ require_once('generateRandomNum.php');
 //generateRandomNum 
 
 echo $rand . " number generated 0 to 6:  \n". $randWithVal;
+
+
+
+

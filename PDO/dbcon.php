@@ -25,20 +25,6 @@
 //   echo 'Protocol version: '.$mysqli->protocol_version;
 
 $query = "SELECT * FROM `users`";
-
  $result = $conn->query($query);
 
 
- if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-      echo "id: " . $row["id"]. " <br>Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>" . $row["created"]. "<br><br>";
-    }
-  } else {
-    echo "0 results";
-  }
-
-
-
-
-$conn->close();
