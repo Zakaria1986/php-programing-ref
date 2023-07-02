@@ -6,6 +6,37 @@
 */
 // require_once('dbcon.php');
 
+class UserCl{
+
+  protected $dates = [
+      'created',
+   
+   ];
+
+   public function __construct()
+   {
+       foreach($this->dates as $date)
+       {
+         $this->{$date} = new DateTime($this->{$date});
+       }
+   }
+
+   public function getId(){
+      return  $this->id; 
+     }
+
+  public function getNames(){
+   return  $this->first_name ." ". $this->last_name; 
+  }
+
+  public function getEmail(){
+   return  $this->email; 
+  }
+
+  public function getCreated(){
+   return $this->created->format('d M Y h:i:s');
+  }
+}
 
 
 //creating PDO database connection, below we are connecting to mysql,
@@ -36,31 +67,14 @@ $users = $db->query("
 // echo $usersVal['last_name'],'<br>';
 // echo $usersVal['email'],'<br>';
 // echo $usersVal['created'],'<br>';
-?>
 
 
-
-<?php
-
-class UserCl{
-   public function getId(){
-      return  $this->id; 
-     }
-
-  public function getNames(){
-   return  $this->first_name ." ". $this->last_name; 
-  }
-
-  public function getEmail(){
-   return  $this->email; 
-  }
-
-  public function getCreated(){
-   return  $this->created; 
-  }
-}
 // this line binds the class with the $users database query
 $users->setFetchMode(PDO::FETCH_CLASS, 'UserCl');
+
+
+// echo '<pre>', var_dump($users->fetch()) ,'</pre>'; 
+// die();
 ?>
 
 
@@ -82,7 +96,7 @@ $users->setFetchMode(PDO::FETCH_CLASS, 'UserCl');
 while( $usersVal = $users->fetch() ): ?>
    <div class='user'>
      
-      <p><strong>User id:</strong> <?php echo $usersVal->getId() ?> </hp><br/>
+      <p><strong>User id:</strong> <?php echo $usersVal->id ?> </hp><br/>
       <p><strong>User name:</strong> <?php echo $usersVal->getNames() ?> </hp><br/>
       <p><strong>User email:</strong> <?php echo $usersVal->getEmail() ?> </hp><br/>
       <p><strong>User created:</strong> <?php echo $usersVal->getCreated() ?> </hp><br/>
