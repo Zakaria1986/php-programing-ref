@@ -51,24 +51,6 @@ $users = $db->query("
    SELECT * FROM users
 ");
 
-// fetchAll gets all the array values
-// while($usersVal =$users->fetchObject()){
-//    echo $usersVal->email,"<br>";
-// };
-
-// while($usersVal =$users->fetchObject()){
-//    echo $usersVal->email,"<br>";
-// };
-
-
-
-// echo $usersVal[0],'<br>';
-// echo $usersVal['first_name'].'<br>';
-// echo $usersVal['last_name'],'<br>';
-// echo $usersVal['email'],'<br>';
-// echo $usersVal['created'],'<br>';
-
-
 // this line binds the class with the $users database query
 $users->setFetchMode(PDO::FETCH_CLASS, 'UserCl');
 
