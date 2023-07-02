@@ -48,14 +48,16 @@ $users = $db->query("
 <body>
 
 <!-- Here we have looped through some objects and outputted the object data into browser  -->
-<?php while($usersVal = $users->fetchObject()): ?>
+<?php
+// using foreach loop:
+foreach($users as $usersVal): ?>
    <div class='user'>
-      <h4>User Id: <?php echo $usersVal->id ?> </h4>
-   <p>User name: <?php echo $usersVal->first_name, " ",  $usersVal->last_name ?> </hp><br/>
-   <p>User email: <?php echo $usersVal->email ?> </hp><br/>
-   <p>User created: <?php echo $usersVal->created ?> </hp><br/>
-</div><br/>
-   <?php endwhile ?> 
+      <h4>User Id: <?php echo $usersVal['id'] ?> </h4>
+      <p>User name: <?php echo $usersVal['first_name']. " ".  $usersVal['last_name']; ?> </hp><br/>
+      <p>User email: <?php echo $usersVal['email']; ?> </hp><br/>
+      <p>User created: <?php echo $usersVal['created']; ?> </hp><br/>
+      </div><br/>
+   <?php endforeach ?>
 
 </body>
 </html>
