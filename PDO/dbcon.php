@@ -24,7 +24,4 @@
 //   echo '<br>';
 //   echo 'Protocol version: '.$mysqli->protocol_version;
 
-$query = "SELECT * FROM `users`";
- $result = $conn->query($query);
-
-
+?>

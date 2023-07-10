@@ -26,13 +26,8 @@
 
 //creating PDO database connection, below we are connecting to mysql,
 // pdo_drivers() this give you array of drivers this gets the first times on the array which is mysql: pdo_drivers()[0]
-try{
+
 $db = new PDO(pdo_drivers()[0].':host=localhost;dbname=users','root', 'root'); 
-// var_dump($db);
-}catch(PDOEception $e){
-  // var_dump($e->getMessage());
-  die('Site is down');
-}
 
 
 

@@ -2,7 +2,7 @@
 
 /*
 ** Intermediate PHP concepts
-** PDO CONCEPTS: character scaping with the code
+** PDO CONCEPTS: 
 */
 
 

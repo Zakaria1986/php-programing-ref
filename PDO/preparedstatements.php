@@ -44,6 +44,11 @@ if(!empty($_POST)){
             'last_name' => $lastName,
             'email' => $email
         ]);
+
+            // this line get the user id after resgistering
+        $userID = $db->lastInSertId();
+        echo $userID; 
+        die();
 }
 
 ?>

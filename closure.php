@@ -25,3 +25,4 @@ string('Alex', function($name){
    // print_r($name);
     echo $name['upper'];
 });
+
