@@ -25,17 +25,20 @@ require_once('./db.php');
 
 <?php 
 
-$query = "SELECT first_name, last_name, email FROM users WHERE first_name =?";
-$user = $db->prepare($query); 
+if(!empty($_POST['submit'])){
+    // var_dump($_POST);
 
-$user->bind_param('s', $_GET['first_name']); 
 
-$user->execute(); 
+   $l_name = $_POST['last_name'];  
+   $f_name = $_POST['first_name']; 
+   $email =  $_POST['email']; 
 
-$user->bind_result($first_name, $last_name, $email);
+    $insert = $db->prepare("INSERT INTO users (first_name, last_name, email) VALUES(?,?,?)"); 
 
-while($user->fetch()){
+//    bind_param("sss", $f_name, $l_name,  $email);
+   $insert-> bind_param("sss", $f_name, $l_name, $email);
 
-echo $email;
 
+    $insert->execute();; 
+    $insert->close();
 }

@@ -4,7 +4,6 @@
 // Loading database
 require_once('./db.php');
 ?>
-<!-- prepared statement, you bind some value so you don't have to use real_escape_string() -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +24,20 @@ require_once('./db.php');
 
 <?php 
 
-$query = "SELECT first_name, last_name, email FROM users WHERE first_name =?";
-$user = $db->prepare($query); 
+if(!empty($_POST['submit'])){
+    // var_dump($_POST);
+    $l_name = $db->real_escape_string($_POST['last_name']);  
+    $f_name = $db->real_escape_string($_POST['first_name']); 
+    $email = $db->real_escape_string($_POST['email']); 
 
-$user->bind_param('s', $_GET['first_name']); 
+    $insert = "INSERT INTO users (first_name, last_name, email) VALUES('$l_name','$f_name','$email')"; 
 
-$user->execute(); 
-
-$user->bind_result($first_name, $last_name, $email);
-
-while($user->fetch()){
-
-echo $email;
-
+    if($db->query($insert) === true){
+        echo 'Success'; 
+    }
 }
+
+
+
+
+?>
