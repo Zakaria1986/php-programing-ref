@@ -8,10 +8,9 @@ require_once('./db.php');
 
 <?php 
 $userQuery = $db->query("SELECT * FROM users"); 
-echo $userQuery->fetch_object()->email;
+$userQuery->fetch_object()->email;
+echo var_dump($userQuery); 
 
-// closing sql database connection
-$db->close(); 
-
-
+// Use free free() up query everytime you fetch a result. 
+$userQuery->free(); 
 ?>
